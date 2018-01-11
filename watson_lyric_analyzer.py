@@ -45,7 +45,6 @@ def lyrics_to_doc(lyrics):
             line = line.strip()
             if ']' in line:
                 continue
-            print(line)
             the_file.write(line + '\n')
 
         the_file.close()
