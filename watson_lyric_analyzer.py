@@ -11,28 +11,33 @@ base_url = "http://api.genius.com"
 headers = {'Authorization': ('Bearer ' + config.GENIUS_BEARER_TOKEN)}
 
 
+"""
+Call Genius API with song data and scrape site to get lyrics
+Input: Path to URL for getting to lyrics page
+"""
 
-# {
-#   "url": "https://gateway.watsonplatform.net/tone-analyzer/api",
-#   "username": "366078ad-95b5-4ac0-b5c6-66fcf8a53953",
-#   "password": "8xj5T5OJSSZN"
-# }
-
+# Adapted from https://bigishdata.com/2016/09/27/getting-song-lyrics-from-geniuss-api-scraping/
 def lyrics_from_song_api_path(song_api_path):
   song_url = base_url + song_api_path
   response = requests.get(song_url, headers=headers)
   json = response.json()
   path = json["response"]["song"]["path"]
-  #gotta go regular html scraping... come on Genius
   page_url = "http://genius.com" + path
   page = requests.get(page_url)
+
+  # Web Scraping section
   html = BeautifulSoup(page.text, "html.parser")
   #remove script tags that they put in the middle of the lyrics
   [h.extract() for h in html('script')]
-  #at least Genius is nice and has a tag called 'lyrics'!
-  lyrics = html.find("div", class_= "lyrics").get_text() #updated css where the lyrics are based in HTML
+
+  lyrics = html.find("div", class_= "lyrics").get_text()
   return lyrics
 
+
+"""
+Save lyrics to doc 'lyrics.txt'
+input: string containing lyrics
+"""
 def lyrics_to_doc(lyrics):
     split_lyrics = lyrics.splitlines()
     with open('lyrics.txt', 'w') as the_file:
@@ -45,6 +50,10 @@ def lyrics_to_doc(lyrics):
 
         the_file.close()
 
+"""
+Get analysis from Watson on lyrics_to_doc
+"""
+# Adapted from IBM Watson Tone Analyzer tutorial: https://www.ibm.com/watson/developercloud/tone-analyzer/api/v3/?cm_mc_uid=70738413429015075187085&cm_mc_sid_50200000=1515616067&cm_mc_sid_52640000=1515617306#post-tone
 def watson_analyze():
     tone_analyzer = ToneAnalyzerV3(
         username="366078ad-95b5-4ac0-b5c6-66fcf8a53953",
@@ -57,6 +66,11 @@ def watson_analyze():
 
     return tone
 
+
+"""
+Print results from analysis
+Input: ToneAnalysis object
+"""
 def display_watson_results(tone):
 
     print('\nLyrical Lines Analysis:\n')
