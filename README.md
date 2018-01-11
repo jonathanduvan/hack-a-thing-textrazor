@@ -1,6 +1,4 @@
-# hack-a-thing-watson
-
-## Watson + Genius Song Analyzer 
+# Watson + Genius Song Analyzer 
 
 ### Purpose
 The application takes a song title and artist name from the user and accesses the lyrics using the Genius API and basic web scraping. The lyrics are then placed through IBM Watson's tone analyzer, which detects scores for emotions: Anger, Fear, Joy, Sadness, Analytical, Confident, and Tentative. The scores reflect the percentage of confidence Watson has in the matching the tone with the song/line.
