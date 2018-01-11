@@ -14,7 +14,7 @@ To run the application, Python 3 is required. The following packages must be ins
 * The application uses API Keys, secret tokens, and login credentials that are stored in a config.py file not displayed in github. Please feel free to contact me via email, canvas, or slack to get the file.
 
 ### Examples
-Song Title: Out of the Woodwork
+Song Title: Out of the Woodwork  
 Artist Name: Courtney Barnett
 
 ~~~
@@ -76,7 +76,7 @@ Tone: Fear
 Score: 0.773737
 ~~~
 
-Song Title: Freedom is free
+Song Title: Freedom is free  
 Artist Name: Chicano Batman
 
 ~~~
