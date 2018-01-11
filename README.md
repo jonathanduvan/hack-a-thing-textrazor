@@ -19,7 +19,7 @@ To run the application, Python 3 is required. The following packages must be ins
 Song Title: Out of the Woodwork
 Artist Name: Courtney Barnett
 
-`
+~~~
 ANALYZING...
 
 Watson analysis for "Out of the Woodwork" by Courtney Barnett:
@@ -76,11 +76,12 @@ Overall Analysis:
 
 Tone: Fear
 Score: 0.773737
-`
+~~~
 
 Song Title: Freedom is free
 Artist Name: Chicano Batman
 
+~~~
 ANALYZING...
 
 Watson analysis for "Freedom is free" by Chicano Batman:
@@ -140,3 +141,4 @@ Score: 0.782302
 
 Tone: Tentative
 Score: 0.530083
+~~~
